@@ -1,0 +1,1 @@
+Index.PACKAGES = {"kata" : [{"class" : "kata\/AccountNumber.html", "name" : "kata.AccountNumber"}, {"trait" : "kata\/Digits.html", "name" : "kata.Digits"}, {"object" : "kata\/KataBankOcr$.html", "name" : "kata.KataBankOcr"}, {"class" : "kata\/KataSuite.html", "name" : "kata.KataSuite"}, {"class" : "kata\/OcrDigit.html", "name" : "kata.OcrDigit"}]};
