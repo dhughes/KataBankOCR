@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="KataBankOCR:jar">
+    <output-path>$PROJECT_DIR$/target/idea_output/artifacts/KataBankOCR_jar</output-path>
+    <root id="archive" name="KataBankOCR.jar">
+      <element id="module-output" name="KataBankOCR" />
+      <element id="module-test-output" name="KataBankOCR" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/junit-4.10.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/scalatest_2.9.2-1.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.sbt/boot/scala-2.9.2/lib/scala-library.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

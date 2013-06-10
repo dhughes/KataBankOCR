@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_default-bae0a5" default="compile.module.default-bae0a5">
+  <dirname property="module.default-bae0a5.basedir" file="${ant.file.module_default-bae0a5}"/>
+  
+  <property name="module.jdk.home.default-bae0a5" value="${jdk.home.1.6}"/>
+  <property name="module.jdk.bin.default-bae0a5" value="${jdk.bin.1.6}"/>
+  <property name="module.jdk.classpath.default-bae0a5" value="jdk.classpath.1.6"/>
+  
+  <property name="compiler.args.default-bae0a5" value="${compiler.args}"/>
+  
+  <property name="default-bae0a5.output.dir" value="${module.default-bae0a5.basedir}/../target/scala-2.9.2/classes"/>
+  <property name="default-bae0a5.testoutput.dir" value="${module.default-bae0a5.basedir}/../target/scala-2.9.2/test-classes"/>
+  
+  <path id="default-bae0a5.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="default-bae0a5.module.production.classpath">
+    <path refid="${module.jdk.classpath.default-bae0a5}"/>
+    <path refid="library.sbt:_org.scala-lang:scala-library:2.9.2.classpath"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="default-bae0a5.runtime.production.module.classpath">
+    <pathelement location="${default-bae0a5.output.dir}"/>
+    <path refid="library.sbt:_org.scala-lang:scala-library:2.9.2.classpath"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="default-bae0a5.module.classpath">
+    <path refid="${module.jdk.classpath.default-bae0a5}"/>
+    <pathelement location="${default-bae0a5.output.dir}"/>
+    <path refid="library.sbt:_org.scala-lang:scala-library:2.9.2.classpath"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="default-bae0a5.runtime.module.classpath">
+    <pathelement location="${default-bae0a5.testoutput.dir}"/>
+    <pathelement location="${default-bae0a5.output.dir}"/>
+    <path refid="library.sbt:_org.scala-lang:scala-library:2.9.2.classpath"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.default-bae0a5">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.default-bae0a5">
+    <patternset refid="excluded.from.module.default-bae0a5"/>
+  </patternset>
+  
+  <path id="default-bae0a5.module.sourcepath">
+    <dirset dir="${module.default-bae0a5.basedir}/../../KataBankOCR_scala">
+      <include name="src/main/scala"/>
+    </dirset>
+  </path>
+  
+  <path id="default-bae0a5.module.test.sourcepath">
+    <dirset dir="${module.default-bae0a5.basedir}/../../KataBankOCR_scala">
+      <include name="src/test/scala"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.default-bae0a5" depends="compile.module.default-bae0a5.production,compile.module.default-bae0a5.tests" description="Compile module default-bae0a5"/>
+  
+  <target name="compile.module.default-bae0a5.production" depends="register.custom.compilers" description="Compile module default-bae0a5; production classes">
+    <mkdir dir="${default-bae0a5.output.dir}"/>
+    <javac2 destdir="${default-bae0a5.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.default-bae0a5}/javac">
+      <compilerarg line="${compiler.args.default-bae0a5}"/>
+      <bootclasspath refid="default-bae0a5.module.bootclasspath"/>
+      <classpath refid="default-bae0a5.module.production.classpath"/>
+      <src refid="default-bae0a5.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.default-bae0a5"/>
+    </javac2>
+    
+    <copy todir="${default-bae0a5.output.dir}">
+      <fileset dir="${module.default-bae0a5.basedir}/../src/main/scala">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.default-bae0a5.tests" depends="register.custom.compilers,compile.module.default-bae0a5.production" description="compile module default-bae0a5; test classes" unless="skip.tests">
+    <mkdir dir="${default-bae0a5.testoutput.dir}"/>
+    <javac2 destdir="${default-bae0a5.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.default-bae0a5}/javac">
+      <compilerarg line="${compiler.args.default-bae0a5}"/>
+      <bootclasspath refid="default-bae0a5.module.bootclasspath"/>
+      <classpath refid="default-bae0a5.module.classpath"/>
+      <src refid="default-bae0a5.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.default-bae0a5"/>
+    </javac2>
+    
+    <copy todir="${default-bae0a5.testoutput.dir}">
+      <fileset dir="${module.default-bae0a5.basedir}/../src/test/scala">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.default-bae0a5" description="cleanup module">
+    <delete dir="${default-bae0a5.output.dir}"/>
+    <delete dir="${default-bae0a5.testoutput.dir}"/>
+  </target>
+</project>
